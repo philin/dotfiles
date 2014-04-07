@@ -62,6 +62,7 @@ Bundle "tpope/vim-surround.git"
 
 " Code improvements
 Bundle 'taglist.vim'
+Bundle 'kien/ctrlp.vim'
 
 " JavaScript
 Bundle "pangloss/vim-javascript"
@@ -143,6 +144,22 @@ function! NumberToggle()
 endfunc
 noremap <C-n> :call NumberToggle()<cr>
 
+imap jj <ESC>
+
+" === Buffers ===
+" easier for viewing buffer list
+noremap <leader>l :ls<CR>
+" stay on same buffer for CtrlP
+let g:ctrlp_switch_buffer = 0
+
+" === Windows ===
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+" maximize window
+noremap <leader>m <C-W>_
+
 " Press Space to turn off highlighting and clear any message already displayed.
 noremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 noremap <leader>l :ls<CR> "easier for viewing buffer list
@@ -155,4 +172,7 @@ noremap <leader>l :ls<CR> "easier for viewing buffer list
 
 "colorscheme solarized "best colorscheme (need to download)
 
+set hlsearch
+set ignorecase
+set smartcase
 
