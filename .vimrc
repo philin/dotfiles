@@ -30,6 +30,9 @@ set hidden
 "turn on syntax highlighting
 syntax on
 
+" Turn mouse usage on
+set mouse=a
+
 " Change leader to a comma because the backslash is too far away
 " That means all \x commands turn into ,x
 " The mapleader has to be set before vundle starts loading all
@@ -39,18 +42,18 @@ let mapleader=","
 " =============== Vundle Initialization ===============
 " This loads all the plugins specified in ~/.vim/vundle.vim
 " Use Vundle plugin to manage all other plugins
-" git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-" :BundleInstall or :BundleUpdate
-" from  https://github.com/skwp/dotfiles/blob/master/vim/vundles.vim
+"
+" $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" $ vim +PluginInstall +qall
 if filereadable(expand("~/.vim/vundles.vim"))
 source ~/.vim/vundles.vim
 endif
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle (required)
-Bundle "gmarik/vundle"
+Bundle "gmarik/Vundle.vim"
 
 " All your bundles here
 
@@ -59,15 +62,25 @@ Bundle "scrooloose/nerdtree.git"
 Bundle "scrooloose/syntastic.git"
 Bundle "tpope/vim-repeat.git"
 Bundle "tpope/vim-surround.git"
+Bundle "tpope/vim-fugitive"
+Bundle "tpope/vim-unimpaired"
+Bundle 'bling/vim-airline'
 
-" Code improvements
-Bundle 'taglist.vim'
+Bundle 'altercation/vim-colors-solarized'
+
+Bundle "L9"
 Bundle 'kien/ctrlp.vim'
+Bundle "Shougo/neocomplcache.git"
+
+"Code improvements
+Bundle 'taglist.vim'
+Bundle 'vim-scripts/CCTree'
+Bundle "scrooloose/nerdcommenter.git"
 
 " JavaScript
-Bundle "pangloss/vim-javascript"
+"Bundle "pangloss/vim-javascript"
 " use npm install -g jshint if dont have jshint on system
-Bundle "jshint2.vim"
+"Bundle "jshint2.vim"
 
 " ================ Turn Off Swap Files ==============
 
@@ -84,7 +97,6 @@ set undodir=~/.vim/backups
 set undofile
 
 " ================ Indentation ======================
-
 set autoindent
 set smartindent
 set smarttab
@@ -93,6 +105,7 @@ set softtabstop=4
 set tabstop=4
 set expandtab
 
+call vundle#end()
 filetype plugin on
 filetype indent on
 
@@ -123,7 +136,6 @@ set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 
-
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
   let save_cursor = getpos(".")
@@ -144,10 +156,26 @@ function! NumberToggle()
 endfunc
 noremap <C-n> :call NumberToggle()<cr>
 
+function! LeadingSpaceToTab()
+  set noexpandtab
+  :%retab!
+  set expandtab
+endfunc
+noremap <leader>tt :call LeadingSpaceToTab()<CR>
+
+" For local replace
+nnoremap gr gd[{V%:s/<C-R>///gc<left><left><left>
+
+" For global replace
+nnoremap gR gD:%s/<C-R>///gc<left><left><left>
+
+" Press Space to turn off highlighting and clear any message already displayed.
+noremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+
 imap jj <ESC>
 
 " === Buffers ===
-" easier for viewing buffer list
+"easier for viewing buffer list
 noremap <leader>l :ls<CR>
 " stay on same buffer for CtrlP
 let g:ctrlp_switch_buffer = 0
@@ -157,12 +185,41 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
-" maximize window
+"maximize window
 noremap <leader>m <C-W>_
 
-" Press Space to turn off highlighting and clear any message already displayed.
-noremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
-noremap <leader>l :ls<CR> "easier for viewing buffer list
+" ================ open NERDTree drawer ===============
+nmap <leader>d :NERDTreeToggle<CR>
+nmap <leader>f :NERDTreeFind<CR>
+nmap <leader>t :TlistOpen<CR>
+
+" ================ vim fugitive bindings ==============
+nmap <leader>gs :Gstatus<cr>
+nmap <leader>gc :Gcommit<cr>
+nmap <leader>ga :Gwrite<cr>
+nmap <leader>gl :Glog<cr>
+nmap <leader>gd :Gdiff<cr>
+
+" ================ vim airline config ==============
+set encoding=utf-8
+set laststatus=2
+
+let g:airline_theme_patch_func = 'AirlineThemePatch'
+function! AirlineThemePatch(palette)
+  if g:airline_theme == 'powerlineish'
+    for colors in values(a:palette.inactive)
+      let colors[3] = 245
+    endfor
+  endif
+endfunction
+
+let g:airline_theme = 'powerlineish'
+" let g:airline_powerline_fonts = 1
+" if !exists('g:airline_symbols')
+"   let g:airline_symbols = {}
+" endif
+
+set t_Co=256
 
 " Windows gVim options
 "set guioptions-=m "remove menu bar
@@ -170,8 +227,12 @@ noremap <leader>l :ls<CR> "easier for viewing buffer list
 "set guioptions-=r "remove scroll bar
 "set guifont=Consolas:h11:cDEFAULT "change default font for windows
 
-"colorscheme solarized "best colorscheme (need to download)
+" colorscheme solarized "best colorscheme (need to download)
 
+source $HOME/.vim/cscope_maps.vim
+
+set background=dark
+set ignorecase smartcase
 set hlsearch
 set ignorecase
 set smartcase
