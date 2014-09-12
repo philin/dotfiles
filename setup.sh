@@ -18,7 +18,7 @@ ln -s ~/dotfiles/.screenrc ~/.screenrc
 # Set up vim and code exploration
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 sudo apt-get install -y exuberant-ctags
-wget http://cscope.sourceforge.net/cscope_maps.vim --directory-prefix=~/.vim/
+wget http://cscope.sourceforge.net/cscope_maps.vim --directory-prefix=/home/$USER/.vim/
 vim +PluginInstall +qall
 
 # Utility tools
