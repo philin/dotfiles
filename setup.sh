@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#
 # Philbert Lin
 # Set up script for Ubuntu Desktop
 #
