@@ -234,6 +234,7 @@ source $HOME/.vim/cscope_maps.vim
 set background=dark
 set ignorecase smartcase
 set hlsearch
+set incsearch
 set ignorecase
 set smartcase
 
