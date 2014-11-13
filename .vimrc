@@ -21,6 +21,8 @@ set showmode                    "Show current mode down the bottom
 set gcr=a:blinkon0              "Disable cursor blink
 set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
+set so=7 " always keep at least 7 lines of context when scrolling
+set showmatch " show matching brackets when cursor is over them
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
@@ -179,6 +181,9 @@ imap jj <ESC>
 noremap <leader>l :ls<CR>
 " stay on same buffer for CtrlP
 let g:ctrlp_switch_buffer = 0
+
+" When pressing <leader>cd switch to the directory of the open buffer
+map <leader>cd :cd %:p:h<cr>
 
 " === Windows ===
 map <C-h> <C-w>h
