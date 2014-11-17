@@ -192,6 +192,8 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 "maximize window
 noremap <leader>m <C-W>_
+"close window
+noremap <leader>q <C-W>q
 
 " ================ open NERDTree drawer ===============
 nmap <leader>d :NERDTreeToggle<CR>
