@@ -74,7 +74,7 @@ Bundle "L9"
 Bundle 'kien/ctrlp.vim'
 Bundle "Shougo/neocomplcache.git"
 
-"Code improvements
+" Code improvements
 Bundle 'taglist.vim'
 Bundle 'vim-scripts/CCTree'
 Bundle "scrooloose/nerdcommenter.git"
@@ -83,6 +83,9 @@ Bundle "scrooloose/nerdcommenter.git"
 "Bundle "pangloss/vim-javascript"
 " use npm install -g jshint if dont have jshint on system
 "Bundle "jshint2.vim"
+
+" Python
+Bundle "klen/python-mode"
 
 " ================ Turn Off Swap Files ==============
 

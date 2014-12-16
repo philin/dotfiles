@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Philbert Lin
-# Set up script for Ubuntu Desktop
+# Set up script for Ubuntu 12.04 Desktop
 #
 # Do these first in shell
 # $ export http_proxy=
@@ -23,5 +23,21 @@ wget http://cscope.sourceforge.net/cscope_maps.vim --directory-prefix=/home/$USE
 vim +PluginInstall +qall
 
 # Utility tools
-sudo apt-get install -y byobu tree
+sudo apt-get install -y byobu tree htop
 
+read -r -p "Install Python Web Packages? [y/N] " response1
+case $response1 in
+    [yY][eE][sS]|[yY])
+        wget https://bootstrap.pypa.io/get-pip.py
+        sudo python get-pip.py
+        sudo pip install virtualenv
+        ;;
+esac
+
+read -r -p "Install zsh? [y/N] " response2
+case $response2 in
+    [yY][eE][sS]|[yY])
+        sudo apt-get install -y zsh
+        curl -L http://install.ohmyz.sh | sh
+        ;;
+esac
