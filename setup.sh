@@ -16,6 +16,10 @@
 ln -s ~/dotfiles/.vimrc ~/.vimrc
 ln -s ~/dotfiles/.screenrc ~/.screenrc
 
+# Get new package releases
+sudo apt-get update
+sudo apt-get dist-upgrade
+
 # Set up vim and code exploration
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 sudo apt-get install -y exuberant-ctags
@@ -23,7 +27,7 @@ wget http://cscope.sourceforge.net/cscope_maps.vim --directory-prefix=/home/$USE
 vim +PluginInstall +qall
 
 # Utility tools
-sudo apt-get install -y byobu tree htop
+sudo apt-get install -y byobu tree htop binutils build-essential
 
 read -r -p "Install Python Web Packages? [y/N] " response1
 case $response1 in
