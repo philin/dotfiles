@@ -32,6 +32,7 @@ sudo apt-get install -y byobu tree htop binutils build-essential
 read -r -p "Install Python Web Packages? [y/N] " response1
 case $response1 in
     [yY][eE][sS]|[yY])
+        sudo apt-get install -y python-dev
         wget https://bootstrap.pypa.io/get-pip.py
         sudo python get-pip.py
         sudo pip install virtualenv
