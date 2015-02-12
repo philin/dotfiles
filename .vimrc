@@ -69,6 +69,7 @@ Bundle "tpope/vim-unimpaired"
 Bundle 'bling/vim-airline'
 
 Bundle 'altercation/vim-colors-solarized'
+Plugin 'rizzatti/dash.vim'
 
 Bundle "L9"
 Bundle 'kien/ctrlp.vim'
@@ -78,6 +79,7 @@ Bundle "Shougo/neocomplcache.git"
 Bundle 'taglist.vim'
 Bundle 'vim-scripts/CCTree'
 Bundle "scrooloose/nerdcommenter.git"
+Bundle "rking/ag.vim"
 
 " JavaScript
 "Bundle "pangloss/vim-javascript"
@@ -86,6 +88,9 @@ Bundle "scrooloose/nerdcommenter.git"
 
 " Python
 Bundle "klen/python-mode"
+
+" Salt
+Bundle "saltstack/salt-vim"
 
 " ================ Turn Off Swap Files ==============
 
@@ -185,6 +190,9 @@ noremap <leader>l :ls<CR>
 " stay on same buffer for CtrlP
 let g:ctrlp_switch_buffer = 0
 
+" Don't switch working directory when invoked
+let g:ctrlp_working_path_mode = 0
+
 " When pressing <leader>cd switch to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>
 
@@ -209,6 +217,10 @@ nmap <leader>gc :Gcommit<cr>
 nmap <leader>ga :Gwrite<cr>
 nmap <leader>gl :Glog<cr>
 nmap <leader>gd :Gdiff<cr>
+nmap <leader>gb :Gblame<cr>
+
+" ================ Dash search bindings ==============
+nmap <silent> <leader>k <Plug>DashSearch
 
 " ================ vim airline config ==============
 set encoding=utf-8
@@ -239,8 +251,6 @@ set t_Co=256
 
 " colorscheme solarized "best colorscheme (need to download)
 
-source $HOME/.vim/cscope_maps.vim
-
 set background=dark
 set ignorecase smartcase
 set hlsearch
@@ -248,3 +258,18 @@ set incsearch
 set ignorecase
 set smartcase
 
+" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+
+" Python Mode settings
+let g:pymode_lint_write = 0       "turn off running pylint on file save
+let g:pymode_rope = 0
+nnoremap <leader>p :PyLint<cr>    "pressing ,p will run plyint on current buffer
+
+autocmd BufEnter,BufNew *.sls setlocal filetype=sls
