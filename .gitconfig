@@ -1,0 +1,33 @@
+[credential]
+	helper = cache
+
+[user]
+    name = Philbert Lin
+    email = philin@gmail.com
+
+[color]
+    ui = auto
+[alias]
+    br = branch
+    ci = commit
+    co = checkout
+    d = diff
+    find = "!git ls-files | grep -i"
+    g = grep -P
+    pr = "!hub pull-request"
+    purr = pull --rebase
+    st = status -sb
+    up = "!git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)"
+
+[log]
+    abbrevCommit = true
+[core]
+	excludesfile = /Users/philbert/.gitignore
+[merge]
+    conflictstyle = diff3
+[push]
+    default = simple
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
