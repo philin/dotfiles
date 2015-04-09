@@ -87,7 +87,7 @@ Bundle "rking/ag.vim"
 "Bundle "jshint2.vim"
 
 " Python
-Bundle "klen/python-mode"
+Bundle 'klen/python-mode'
 
 " Salt
 Bundle "saltstack/salt-vim"
@@ -269,7 +269,11 @@ endif
 
 " Python Mode settings
 let g:pymode_lint_write = 0       "turn off running pylint on file save
+let g:pymode_lint_signs = 0
 let g:pymode_rope = 0
 nnoremap <leader>p :PyLint<cr>    "pressing ,p will run plyint on current buffer
 
+let g:syntastic_enable_highlighting = 0
+
 autocmd BufEnter,BufNew *.sls setlocal filetype=sls
+
