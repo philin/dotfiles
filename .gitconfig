@@ -1,5 +1,5 @@
 [credential]
-	helper = cache
+    helper = cache
 
 [user]
     name = Philbert Lin
@@ -22,12 +22,12 @@
 [log]
     abbrevCommit = true
 [core]
-	excludesfile = /Users/philbert/.gitignore
+    excludesfile = /Users/philbert/.gitignore
 [merge]
     conflictstyle = diff3
 [push]
     default = simple
 [filter "hawser"]
-	clean = git hawser clean %f
-	smudge = git hawser smudge %f
-	required = true
+    clean = git hawser clean %f
+    smudge = git hawser smudge %f
+    required = true
