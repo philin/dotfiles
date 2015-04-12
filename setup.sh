@@ -47,6 +47,8 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     brew install byobu
     brew install tree
+    brew install macvim
+    brew install hub
 fi
 
 read -r -p "Install Python Web Packages? [y/N] " response1
