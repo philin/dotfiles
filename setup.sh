@@ -10,8 +10,8 @@
 #
 # Get dotfiles
 # $ git clone https://github.com/philin/dotfiles.git
-# $ chmod ~/dotfiles/setup.sh
-# $ .dotfiles/setup.sh
+# $ chmod +x ~/dotfiles/setup.sh
+# $ ~/dotfiles/setup.sh
 
 ln -s ~/dotfiles/.vimrc ~/.vimrc
 ln -s ~/dotfiles/.screenrc ~/.screenrc
