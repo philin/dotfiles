@@ -13,7 +13,9 @@
 # $ chmod +x ~/dotfiles/setup.sh
 # $ ~/dotfiles/setup.sh
 
+# symlink config files
 ln -s ~/dotfiles/.vimrc ~/.vimrc
+ln -s ~/dotfiles/.gvimrc ~/.gvimrc
 ln -s ~/dotfiles/.screenrc ~/.screenrc
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 
