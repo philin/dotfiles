@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Philbert Lin
-# Set up script for Ubuntu 12.04 Desktop
+# Set up script for Ubuntu 12.04 or Mac OS X (10.10+)
 #
 # Do these first in shell
 # $ export http_proxy=
@@ -15,19 +15,39 @@
 
 ln -s ~/dotfiles/.vimrc ~/.vimrc
 ln -s ~/dotfiles/.screenrc ~/.screenrc
+ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 
 # Get new package releases
-sudo apt-get update
-sudo apt-get dist-upgrade
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    sudo apt-get update
+    sudo apt-get dist-upgrade
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    # download brew if doesn't exist
+    if ! hash brew 2>/dev/null; then
+        echo "Downloading brew"
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    fi
+fi
 
 # Set up vim and code exploration
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-sudo apt-get install -y exuberant-ctags
-wget http://cscope.sourceforge.net/cscope_maps.vim --directory-prefix=/home/$USER/.vim/
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    sudo apt-get install -y exuberant-ctags
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    brew install ctags
+fi
+
+(cd ~/.vim && curl http://cscope.sourceforge.net/cscope_maps.vim -o cscope_maps.vim)
+
 vim +PluginInstall +qall
 
 # Utility tools
-sudo apt-get install -y byobu tree htop binutils build-essential
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    sudo apt-get install -y byobu tree htop binutils build-essential
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    brew install byobu
+    brew install tree
+fi
 
 read -r -p "Install Python Web Packages? [y/N] " response1
 case $response1 in
@@ -42,7 +62,9 @@ esac
 read -r -p "Install zsh? [y/N] " response2
 case $response2 in
     [yY][eE][sS]|[yY])
-        sudo apt-get install -y zsh
-        curl -L http://install.ohmyz.sh | sh
+        if [[ "$OSTYPE" == "linux-gnu" ]]; then
+            sudo apt-get install -y zsh
+        fi
+        curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
         ;;
 esac
