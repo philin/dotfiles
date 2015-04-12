@@ -1,10 +1,8 @@
 [credential]
     helper = cache
-
 [user]
     name = Philbert Lin
     email = philin@gmail.com
-
 [color]
     ui = auto
 [alias]
