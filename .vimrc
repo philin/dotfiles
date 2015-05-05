@@ -55,42 +55,43 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " let Vundle manage Vundle (required)
-Bundle "gmarik/Vundle.vim"
+Plugin 'gmarik/Vundle.vim'
 
 " All your bundles here
 
 " General vim improvements
-Bundle "scrooloose/nerdtree.git"
-Bundle "scrooloose/syntastic.git"
-Bundle "tpope/vim-repeat.git"
-Bundle "tpope/vim-surround.git"
-Bundle "tpope/vim-fugitive"
-Bundle "tpope/vim-unimpaired"
-Bundle 'bling/vim-airline'
+Plugin 'scrooloose/nerdtree.git'
+Plugin 'scrooloose/syntastic.git'
+Plugin 'tpope/vim-repeat.git'
+Plugin 'tpope/vim-surround.git'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'bling/vim-airline'
 
-Bundle 'altercation/vim-colors-solarized'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'rizzatti/dash.vim'
 
-Bundle "L9"
-Bundle 'kien/ctrlp.vim'
-Bundle "Shougo/neocomplcache.git"
+Plugin 'L9'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Shougo/neocomplcache.git'
 
 " Code improvements
-Bundle 'taglist.vim'
-Bundle 'vim-scripts/CCTree'
-Bundle "scrooloose/nerdcommenter.git"
-Bundle "rking/ag.vim"
+Plugin 'taglist.vim'
+Plugin 'vim-scripts/CCTree'
+Plugin 'scrooloose/nerdcommenter.git'
+Plugin 'rking/ag.vim'
 
 " JavaScript
-"Bundle "pangloss/vim-javascript"
+Plugin 'pangloss/vim-javascript'
 " use npm install -g jshint if dont have jshint on system
-"Bundle "jshint2.vim"
+Plugin 'jshint2.vim'
+Plugin 'kchmck/vim-coffee-script'
 
 " Python
-Bundle 'klen/python-mode'
+Plugin 'klen/python-mode'
 
 " Salt
-Bundle "saltstack/salt-vim"
+Plugin 'saltstack/salt-vim'
 
 " ================ Turn Off Swap Files ==============
 
@@ -116,8 +117,7 @@ set tabstop=4
 set expandtab
 
 call vundle#end()
-filetype plugin on
-filetype indent on
+filetype plugin indent on
 
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
@@ -268,12 +268,13 @@ if executable('ag')
 endif
 
 " Python Mode settings
-let g:pymode_lint_write = 0       "turn off running pylint on file save
-let g:pymode_lint_signs = 0
+"let g:pymode_lint_write = 0       "turn off running pylint on file save
+"let g:pymode_lint_signs = 0
 let g:pymode_rope = 0
 nnoremap <leader>p :PyLint<cr>    "pressing ,p will run plyint on current buffer
 
 let g:syntastic_enable_highlighting = 0
 
 autocmd BufEnter,BufNew *.sls setlocal filetype=sls
+autocmd BufEnter,BufNew *.coffee setlocal filetype=coffee
 
