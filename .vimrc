@@ -277,4 +277,4 @@ let g:syntastic_enable_highlighting = 0
 
 autocmd BufEnter,BufNew *.sls setlocal filetype=sls
 autocmd BufEnter,BufNew *.coffee setlocal filetype=coffee
-
+autocmd BufEnter,BufNew *.html setlocal shiftwidth=2 tabstop=2 softtabstop=2
