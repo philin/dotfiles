@@ -75,6 +75,10 @@ Plugin 'L9'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Shougo/neocomplcache.git'
 
+" Writing improvements
+Plugin 'junegunn/goyo.vim'
+Plugin 'reedes/vim-pencil'
+
 " Code improvements
 Plugin 'taglist.vim'
 Plugin 'vim-scripts/CCTree'
@@ -210,6 +214,8 @@ noremap <leader>q <C-W>q
 nmap <leader>d :NERDTreeToggle<CR>
 nmap <leader>f :NERDTreeFind<CR>
 nmap <leader>t :TlistOpen<CR>
+" Hide certain files from explorer
+let NERDTreeIgnore = ['\.pyc$']
 
 " ================ vim fugitive bindings ==============
 nmap <leader>gs :Gstatus<cr>
@@ -218,6 +224,16 @@ nmap <leader>ga :Gwrite<cr>
 nmap <leader>gl :Glog<cr>
 nmap <leader>gd :Gdiff<cr>
 nmap <leader>gb :Gblame<cr>
+
+" Bindings for Gdiff merge conflicts, grab left and right respectively
+" while you're on the middle merging buffer
+"
+" <bar> is for | and executes the cmds sequentially
+"
+" dp works if you're on sourced and in 3way merge
+nmap <leader>gn :diffget //2 <bar> diffupdate<cr>
+nmap <leader>gm :diffget //3 <bar> diffupdate<cr>
+nmap <leader>gu :diffupdate<cr>
 
 " ================ Dash search bindings ==============
 nmap <silent> <leader>k <Plug>DashSearch
@@ -264,7 +280,7 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_user_command = 'ag %s -l -U --nocolor -g ""'
 endif
 
 " Python Mode settings
@@ -278,3 +294,4 @@ let g:syntastic_enable_highlighting = 0
 autocmd BufEnter,BufNew *.sls setlocal filetype=sls
 autocmd BufEnter,BufNew *.coffee setlocal filetype=coffee
 autocmd BufEnter,BufNew *.html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd BufEnter,BufNew *.txt setlocal shiftwidth=2 tabstop=2 softtabstop=2
