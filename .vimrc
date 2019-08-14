@@ -61,41 +61,11 @@ Plugin 'gmarik/Vundle.vim'
 
 " General vim improvements
 Plugin 'scrooloose/nerdtree.git'
-Plugin 'scrooloose/syntastic.git'
-Plugin 'tpope/vim-repeat.git'
-Plugin 'tpope/vim-surround.git'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'bling/vim-airline'
-
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'rizzatti/dash.vim'
-
-Plugin 'L9'
 Plugin 'kien/ctrlp.vim'
-Plugin 'Shougo/neocomplcache.git'
-
-" Writing improvements
-Plugin 'junegunn/goyo.vim'
-Plugin 'reedes/vim-pencil'
 
 " Code improvements
-Plugin 'taglist.vim'
-Plugin 'vim-scripts/CCTree'
-Plugin 'scrooloose/nerdcommenter.git'
 Plugin 'rking/ag.vim'
-
-" JavaScript
-Plugin 'pangloss/vim-javascript'
-" use npm install -g jshint if dont have jshint on system
-Plugin 'jshint2.vim'
-Plugin 'kchmck/vim-coffee-script'
-
-" Python
-Plugin 'klen/python-mode'
-
-" Salt
-Plugin 'saltstack/salt-vim'
+Plugin 'tpope/vim-fugitive.git'
 
 " ================ Turn Off Swap Files ==============
 
@@ -295,3 +265,4 @@ autocmd BufEnter,BufNew *.sls setlocal filetype=sls
 autocmd BufEnter,BufNew *.coffee setlocal filetype=coffee
 autocmd BufEnter,BufNew *.html setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd BufEnter,BufNew *.txt setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd BufEnter,BufNew *.hql setlocal filetype=sql
