@@ -66,6 +66,7 @@ Plugin 'kien/ctrlp.vim'
 " Code improvements
 Plugin 'rking/ag.vim'
 Plugin 'tpope/vim-fugitive.git'
+Plugin 'tpope/vim-unimpaired.git'
 
 " ================ Turn Off Swap Files ==============
 
@@ -170,6 +171,10 @@ let g:ctrlp_working_path_mode = 0
 " When pressing <leader>cd switch to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>
 
+" Copy directly to system clipboard for MacOS (need vim compiled with
+" +clipboard, so nvim works with this
+map <leader>y "*y<cr>
+
 " === Windows ===
 map <C-h> <C-w>h
 map <C-j> <C-w>j
@@ -245,13 +250,22 @@ set ignorecase
 set smartcase
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+" from https://thoughtbot.com/blog/faster-grepping-in-vim
 if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l -U --nocolor -g ""'
+
+  " bind \ (backward slash) to grep shortcut
+  command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+
+  nnoremap \ :Ag<SPACE>
 endif
+
+" bind K to grep word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " Python Mode settings
 "let g:pymode_lint_write = 0       "turn off running pylint on file save
