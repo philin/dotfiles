@@ -18,6 +18,7 @@ ln -s ~/dotfiles/.vimrc ~/.vimrc
 ln -s ~/dotfiles/.gvimrc ~/.gvimrc
 ln -s ~/dotfiles/.screenrc ~/.screenrc
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
+ln -s ~/dotfiles/nvim/init.vim ~/.config/nvim/init.vim
 
 # Get new package releases
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
