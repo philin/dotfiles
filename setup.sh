@@ -28,7 +28,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     # download brew if doesn't exist
     if ! hash brew 2>/dev/null; then
         echo "Downloading brew"
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
 fi
 
