@@ -30,6 +30,10 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
         echo "Downloading brew"
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
+
+    echo '# Set PATH, MANPATH, etc., for Homebrew.' >> /Users/"$(whoami)"/.zprofile
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/"$(whoami)"/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 # Set up vim and code exploration
