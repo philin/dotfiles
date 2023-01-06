@@ -59,10 +59,10 @@ vim +PluginInstall +qall
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     sudo apt-get install -y byobu tree htop binutils build-essential
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    brew install byobu
+    # brew install byobu
     brew install tree
-    brew install macvim
-    brew install hub
+    # brew install macvim
+    # brew install hub
     brew install jq
     # bunch of programs from
     # https://switowski.com/blog/favorite-cli-tools/
