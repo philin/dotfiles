@@ -22,11 +22,14 @@
     abbrevCommit = true
 [core]
     excludesfile = /Users/philbert/.gitignore
+	precomposeunicode = true
 [merge]
     conflictstyle = diff3
 [push]
-    default = simple
+	default = current
 [filter "hawser"]
     clean = git hawser clean %f
     smudge = git hawser smudge %f
     required = true
+[rerere]
+	enabled = true

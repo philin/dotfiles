@@ -17,8 +17,15 @@
 ln -s ~/dotfiles/.vimrc ~/.vimrc
 ln -s ~/dotfiles/.gvimrc ~/.gvimrc
 ln -s ~/dotfiles/.screenrc ~/.screenrc
-ln -s ~/dotfiles/.gitconfig ~/.gitconfig
+mkdir -p ~/.config/nvim
 ln -s ~/dotfiles/nvim/init.vim ~/.config/nvim/init.vim
+
+read -r -p "symlink gitconfig? usually not used for work laptop [y/N] " response3
+case $response3 in
+    [yY][eE][sS]|[yY])
+        ln -s ~/dotfiles/.gitconfig ~/.gitconfig
+        ;;
+esac
 
 # Get new package releases
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
@@ -56,6 +63,16 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     brew install tree
     brew install macvim
     brew install hub
+    brew install jq
+    # bunch of programs from
+    # https://switowski.com/blog/favorite-cli-tools/
+    brew install ripgrep  # `rg` vs `grep`
+    brew install httpie  # `http` vs curl or wget
+    brew install tldr  # supplement `man`
+    brew install exa  # drop in for `ls`
+    brew install z  # `cd` for a while and then can `z`
+    brew install fd  # `fd` vs `find`
+    brew install fzf  # need to integrate with zsh or fish before using
 fi
 
 read -r -p "Install Python Web Packages? [y/N] " response1
