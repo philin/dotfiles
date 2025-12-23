@@ -67,6 +67,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'rking/ag.vim'
 Plugin 'tpope/vim-fugitive.git'
 Plugin 'tpope/vim-unimpaired.git'
+Plugin 'tpope/vim-abolish.git'
 
 " ================ Turn Off Swap Files ==============
 
@@ -272,6 +273,10 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 "let g:pymode_lint_signs = 0
 let g:pymode_rope = 0
 nnoremap <leader>p :PyLint<cr>    "pressing ,p will run plyint on current buffer
+
+" run current file in py
+nnoremap <leader>r :!python %<CR>
+
 
 let g:syntastic_enable_highlighting = 0
 
